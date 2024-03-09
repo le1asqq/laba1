@@ -18,7 +18,7 @@ max_num = None
 
 with open('input.txt', 'r') as f:
     data = f.read()
-    nums = re.findall(r'-?\b\d+\b', data)
+    nums = re.findall(r'-\d+|\b[02468]\d*\b', data)
     for num in nums:
         num = int(num)
         if num % 2 == 0:
@@ -27,4 +27,4 @@ with open('input.txt', 'r') as f:
                 max_num = num
 
 if max_num is not None:
-    print('Максимальное число: ' + num2words(max_num))
+    print('Максимальное четное отрицательное число: ' + num2words(max_num))
