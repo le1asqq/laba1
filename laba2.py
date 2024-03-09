@@ -18,7 +18,7 @@ max_num = 0
 
 with open('input.txt', 'r') as f:
     data = f.read()
-    nums = re.findall(r'-?\b[02468]\d*\b', data)
+    nums = re.findall(r'-?\b\d*[02468]\b', data)
     for num_str in nums:
         num = int(num_str)
         if num > max_num:
