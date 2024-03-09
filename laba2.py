@@ -7,24 +7,22 @@ def num2words(num):
     if num == 0:
         return 'ноль'
     result = ''
-    while num != 0:
-        digit = abs(num % 10)
+    while num > 0:
+        digit = num % 10
         result = digit_words[digit] + ' ' + result
-        num //= 10
+        num = num // 10
     result = result.strip()
     return result
 
-max_num = None
+max_num = 0
 
 with open('input.txt', 'r') as f:
     data = f.read()
-    nums = re.findall(r'-\d+|\b[02468]\d*\b', data)
-    for num in nums:
-        num = int(num)
-        if num % 2 == 0:
-            lexeme = num2words(num)
-            if max_num is None or num > max_num:
-                max_num = num
+    nums = re.findall(r'-?\b[02468]\d*\b', data)
+    for num_str in nums:
+        num = int(num_str)
+        if num > max_num:
+            max_num = num
 
-if max_num is not None:
-    print('Максимальное четное отрицательное число: ' + num2words(max_num))
+if max_num != 0:
+    print('Максимальное число: ' + num2words(max_num))
