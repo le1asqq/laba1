@@ -1,7 +1,10 @@
 #Целые четные числа. Максимальное число выводить прописью.
 import re
 
-digit_words = {0: 'ноль', 1: 'один', 2: 'два', 3: 'три', 4: 'четыре', 5: 'пять', 6: 'шесть', 7: 'семь', 8: 'восемь', 9: 'девять'}
+digit_words = {
+    0: 'ноль', 1: 'один', 2: 'два', 3: 'три', 4: 'четыре',
+    5: 'пять', 6: 'шесть', 7: 'семь', 8: 'восемь', 9: 'девять'
+}
 
 def num2words(num):
     if num == 0:
@@ -11,18 +14,17 @@ def num2words(num):
         digit = num % 10
         result = digit_words[digit] + ' ' + result
         num = num // 10
-    result = result.strip()
-    return result
+    return result.strip()
 
 max_num = 0
 
 with open('input.txt', 'r') as f:
     data = f.read()
-    nums = re.findall(r'-?\b\d*[02468]\b', data)
+    nums = re.findall(r'-?\d*[02468](?!\d)', data)
     for num_str in nums:
         num = int(num_str)
         if num > max_num:
             max_num = num
 
 if max_num != 0:
-    print('Максимальное число: ' + num2words(max_num))
+    print('Максимальное число:', num2words(max_num))
