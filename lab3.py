@@ -67,37 +67,57 @@ for i in range(N):
     for j in range(N):
         result[i][j] -= K * A[j][i]
 
-# Выводим результат
-print("Результат:")
-for row in result:
-    print(row)
 
 # Считаем суммы в разных областях матрицы А
 sum_below_main = 0
 sum_above_main = 0
 sum_area1 = 0
-
-for i in range(N):
-    for j in range(i):
-        if j < i and j < N//2:
-            sum_below_main += A[i][j]
-
-for i in range(N):
-    for j in range(i, N):
-        if j >= i and j >= N//2:
-            sum_above_main += A[i][j]
-
-for i in range(N//2):
+# Сумма элементов ниже главной диагонали
+s_below_main = 0
+for i in range(n):
     for j in range(i):
         if j < i:
-            sum_area1 += A[i][j]
+            s_below_main += a[i][j]
+print("Сумма элементов ниже главной диагонали:", s_below_main)
 
-for i in range(N//2, N):
-    for j in range(N-(i+1)):
-        if j < N//2:
-            sum_area1 += A[i][j]
+# Сумма элементов выше главной диагонали
+s_above_main = 0
+for i in range(n):
+    for j in range(i, n):
+        if j >= i:
+            s_above_main += a[i][j]
+print("Сумма элементов выше главной диагонали:", s_above_main)
 
-# Выводим суммы в разных областях матрицы А
-print("Сумма элементов ниже главной диагонали:", sum_below_main)
-print("Сумма элементов выше главной диагонали:", sum_above_main)
-print("Сумма элементов в области 1:", sum_area1)
+# Сумма элементов в области 1
+s_area1 = 0
+for i in range(n//2):
+    for j in range(i):
+        if j < i:
+            s_area1 += a[i][j]
+
+for i in range(n//2, n):
+    for j in range(n-(i+1)):
+        if j < n//2:
+            s_area1 += a[i][j]
+print("Сумма элементов в области 1:", s_area1)
+
+# Сумма элементов на главной диагонали
+s_main_diag = sum(a[i][i] for i in range(n))
+print("Сумма элементов на главной диагонали:", s_main_diag)
+
+# Сумма элементов на побочной диагонали
+s_side_diag = sum(a[i][n-(i+1)] for i in range(n))
+print("Сумма элементов на побочной диагонали:", s_side_diag)
+
+# Сумма элементов ниже главной диагонали
+s_below_main_diag = sum(a[i][j] for i in range(n) for j in range(i))
+print("Сумма элементов ниже главной диагонали:", s_below_main_diag)
+
+# Сумма элементов выше главной диагонали
+s_above_main_diag = sum(a[i][j] for i in range(n) for j in range(i+1,n))
+print("Сумма элементов выше главной диагонали:", s_above_main_diag)
+
+# Выводим результат
+print("Результат:")
+for row in result:
+    print(row)
