@@ -59,12 +59,13 @@ for row in C:
     print(row)
 
 # Вычисляем выражение ((К*F)*А– (K * A^T))
-result = [[0 for i in range(N)] for j in range(N)]
+esult = [[0 for i in range(N)] for j in range(N)]
 
 for i in range(N):
     for j in range(N):
-        for k in range(N):
+        for k in range(N//2):  # Исправление: использование правильной размерности
             result[i][j] += K * C[i][k] * A[k][j]
+
 
 
 # Считаем суммы в разных областях матрицы А
