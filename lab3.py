@@ -6,23 +6,24 @@
 
 import random
 
- Вводим два числа K и N
+ 
 K = int(input("Введите число K: "))
 N = int(input("Введите число N: "))
 
 
- Формируем матрицу А
+
 A = [[random.randint(-10, 10) for j in range(N)] for i in range(N)]
 
 
-Формируем матрицы B, C, D, E
+
 B = [[2 for j in range(N//2)] for i in range(N//2)]
 C = [[0, 0, 0, 0] for i in range(N//2)] + [[1, 3, 0, 0] for i in range(N//2, N)]
 D = [[4, 0, 0, 0] for i in range(N//2)] + [[0, 0, 0, 0] for i in range(N//2, N)]
 E = [[2 for j in range(N//2, N)] for i in range(N//2, N)]
 
 
- Выводим матрицы B, C, D, E
+
+
 print("Матрица B:")
 for row in B:
     print(row)
@@ -71,7 +72,7 @@ else:
     C, E = E, C
 
 
- Выводим матрицу F
+ 
 print("Матрица F:")
 for row in C:
     print(row)
