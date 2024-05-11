@@ -4,7 +4,7 @@
 # выражение: A-1*AT – K * F-1, иначе вычисляется выражение (A-1 +G-F-1)*K, где G-нижняя треугольная матрица, полученная из А. 
 # Выводятся по мере формирования А, F и все матричные операции последовательно.
 
-import numpy as np
+ import numpy as np
 import matplotlib.pyplot as plt
 
 def create_matrix(N):
